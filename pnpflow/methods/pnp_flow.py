@@ -118,6 +118,16 @@ class PNP_FLOW(object):
 
                     x_new /= num_samples
                     x = x_new
+                    # z_tilde = self.interpolation_step(z, t1.view(-1, 1, 1, 1))
+                    # # Predictor step (Euler)
+                    # model_z_tilde = self.model(z_tilde, t1)
+                    # x_pred = z_tilde + (1 - t1.view(-1, 1, 1, 1))*0.5 * model_z_tilde
+                    # # x_new = x_pred + (1 - t1.view(-1, 1, 1, 1)) * 0.5 * self.model(x_pred, (1+t1)/2)
+                    # # # Corrector step (Heun's method)
+                    # model_x_pred = self.model(x_pred, (1+t1)/2)
+                    # x_new = z_tilde + (1 - t1.view(-1, 1, 1, 1)) * 0.5 * (model_z_tilde + model_x_pred)
+
+                    # x=x_new
 
                     if self.args.compute_time:
                         torch.cuda.synchronize()
